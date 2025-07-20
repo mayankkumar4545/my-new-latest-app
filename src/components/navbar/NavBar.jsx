@@ -7,7 +7,7 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg custom-navbar">
       <div className="container-fluid">
         <a className="navbar-brand logo-text" href="#">
-          <span className="logo-highlight">Learn</span>ify
+          <span className="logo-highlight">New</span>App
         </a>
         <button
           className="navbar-toggler"
