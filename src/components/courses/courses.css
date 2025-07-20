@@ -131,8 +131,95 @@
   margin: 0;
 }
 
-@media (max-width: 767px) {
-  .description-box {
+/* Extra Small Devices (phones, <576px) */
+@media (max-width: 575.98px) {
+  .courses-heading {
+    font-size: 1.8rem;
+  }
+
+  .filter-btn {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+  }
+
+  .course-card {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+  }
+
+  .more-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .pagination-text {
     text-align: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Small Devices (landscape phones, 576px–767px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .courses-heading {
+    font-size: 2rem;
+  }
+
+  .filter-btn {
+    font-size: 0.9rem;
+  }
+
+  .course-card {
+    width: 48%;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+}
+
+/* Medium Devices (tablets, 768px–991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .course-card {
+    width: 30%;
+  }
+
+  .courses-heading {
+    font-size: 2.2rem;
+  }
+  .more-btn {
+    text-align: center;
+  }
+}
+
+/* Large Devices (desktops, 992px–1199px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .course-card {
+    width: 22%;
+  }
+
+  .courses-heading {
+    font-size: 2.3rem;
+  }
+  .more-btn {
+    text-align: center;
+  }
+}
+
+/* Extra Large Devices (large desktops, ≥1200px) */
+@media (min-width: 1200px) {
+  .course-card {
+    width: 260px;
+  }
+  .more-btn {
+    text-align: center;
+  }
+
+  .courses-heading {
+    font-size: 2.5rem;
   }
 }
