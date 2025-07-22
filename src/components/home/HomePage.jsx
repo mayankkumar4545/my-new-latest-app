@@ -1,4 +1,4 @@
-import Courses from "../courses/COurses";
+import Courses from "../courses/Courses";
 import InformationCourses from "./InformationCourses";
 import IntroPage from "./IntroPage";
 import Upgraded from "./Upgraded";
