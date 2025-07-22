@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 /* --- Root Variables & Base Styles --- */
 :root {
   --font-primary: "Poppins", sans-serif;
@@ -12,8 +13,6 @@
   --border-radius-pill: 50px;
   --transition-fast: all 0.25s ease;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 /* --- Animations --- */
 @keyframes fadeIn {
