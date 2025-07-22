@@ -1,0 +1,152 @@
+/* --- COLOR PALETTE VARIABLES --- */
+/* You can switch themes by uncommenting one of the sections below. */
+:root {
+  /* Theme 1: Default (Matches Screenshot) */
+  --footer-bg: #82b3b3;
+  --footer-text: #000;
+  --footer-border: rgba(0, 0, 0, 0.4);
+
+  /* Theme 2: Dark Mode (Alternative) */
+  /*
+  --footer-bg: #2c3e50;
+  --footer-text: #ecf0f1;
+  --footer-border: #34495e;
+  */
+
+  /* Theme 3: Light/Professional (Alternative) */
+  /*
+  --footer-bg: #f8f9fa;
+  --footer-text: #343a40;
+  --footer-border: #dee2e6;
+  */
+}
+
+/* --- GENERAL FOOTER STYLES --- */
+.closetnow-footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+}
+
+/* --- LOGO & BRAND NAME --- */
+.brand-name {
+  font-size: 2.75rem;
+  font-weight: 300; /* Light weight for the sleek look */
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 18px);
+  grid-template-rows: repeat(3, 18px);
+  gap: 5px;
+}
+
+.logo-square {
+  width: 100%;
+  height: 100%;
+  background-color: var(--footer-text);
+}
+
+.logo-diamond-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-diamond {
+  width: 70.71%; /* This ensures the rotated square fits perfectly within the grid cell */
+  height: 70.71%;
+  background-color: var(--footer-text);
+  transform: rotate(45deg);
+}
+
+/* --- LINK SECTIONS --- */
+.closetnow-footer h5 {
+  font-weight: 700; /* Bold */
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.closetnow-footer .list-unstyled li {
+  margin-bottom: 0.6rem;
+}
+
+.closetnow-footer a {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.closetnow-footer a:hover {
+  opacity: 0.7;
+  text-decoration: none;
+  color: var(--footer-text);
+}
+
+/* --- BOTTOM BAR --- */
+.footer-bottom {
+  border-top: 1px solid var(--footer-border);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.terms-link {
+  margin-left: 1.5rem;
+}
+
+.arrow-box {
+  display: inline-block;
+  border: 1px solid var(--footer-text);
+  padding: 0px 6px 2px 6px; /* top right bottom left */
+  margin-left: 8px;
+  line-height: 1;
+}
+/* --- CLICKABILITY FIX --- */
+
+/* Ensures the entire footer is on a higher layer than other static page content */
+.closetnow-footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Lifts the "Back to top" link specifically, making sure it's clickable */
+.back-to-top-link {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 991.98px) {
+  .brand-name {
+    font-size: 2.25rem;
+  }
+  /* Center link sections on medium screens */
+  .col-md-4 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Center link sections on small screens */
+  .col-6 {
+    text-align: center;
+  }
+  .col-lg-3.col-md-4.col-12 {
+    /* Social column */
+    text-align: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* Stack copyright and terms link on extra-small screens */
+  .copyright-text {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .terms-link {
+    margin-left: 0;
+  }
+}

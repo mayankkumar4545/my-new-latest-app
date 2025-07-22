@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
 
-body,
 .intro-page {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(180deg, #87ceeb 0%, #bde0fe 50%, #fef9ef 100%);
@@ -71,7 +70,7 @@ body,
 .intro-page::before,
 .intro-page::after {
   content: "";
-  position: absolute;
+  position: fixed;
   width: 320px;
   height: 320px;
   z-index: 0;

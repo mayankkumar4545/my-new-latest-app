@@ -1,148 +1,232 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./courses.css";
 
-const courseTabs = {
-  "New courses": [
+// --- Mock Data ---
+// In a real app, you would fetch this data from an API.
+// Using placeholder images. Replace with your actual SVG or image imports.
+const allCourses = {
+  new: [
     {
-      title: "Java Full Stack Development for Beginners",
-      category: "Full Stack",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "n1",
+      category: "Marketing",
+      title: "Creative Writing for Beginners",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#e0d4f5",
     },
     {
+      id: "n2",
+      category: "Psychology",
       title: "Public Speaking and Leadership",
-      category: "Psychology",
-      imageClass: "/assets/full-stack-developer.webp",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#fdecc8",
     },
     {
+      id: "n3",
+      category: "Computer Science",
       title: "Data Visualization Techniques",
-      category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#e0e0e0",
+      border: "1px solid #eee",
     },
     {
-      title: "Digital Illustration with Adobe Illustrator",
+      id: "n4",
       category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
-    },
-    {
-      title: "Digital Illustration with Adobe Illustrator",
-      category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
-    },
-    {
-      title: "Digital Illustration with Adobe Illustrator",
-      category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
-    },
-    {
-      title: "Digital Illustration with Adobe Illustrator",
-      category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
+      title: "Data Visualization Techniques",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#e0e0e0",
+      border: "1px solid #eee",
     },
   ],
-  Recommended: [
+  recommended: [
     {
-      title: "Storytelling for Impact",
-      category: "Marketing",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "r1",
+      category: "Business",
+      title: "Fundamentals of Project Management",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#cce5ff",
     },
     {
-      title: "Behavioral Psychology",
-      category: "Psychology",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "r2",
+      category: "Design",
+      title: "UI/UX Design Principles for Beginners",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#d4edda",
     },
     {
-      title: "Storytelling for Impact",
-      category: "Marketing",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "r3",
+      category: "Finance",
+      title: "Personal Finance and Investment Strategies",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#fff3cd",
     },
     {
-      title: "Behavioral Psychology",
-      category: "Psychology",
-      imageClass: "/assets/full-stack-developer.webp",
-    },
-    {
-      title: "Behavioral Psychology",
-      category: "Psychology",
-      imageClass: "/assets/full-stack-developer.webp",
-    },
-    {
-      title: "Behavioral Psychology",
-      category: "Psychology",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "r4",
+      category: "Health",
+      title: "Introduction to Nutrition and Wellness",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#f8d7da",
     },
   ],
-  "Most popular": [
+  popular: [
     {
-      title: "Advanced Data Science",
-      category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "p1",
+      category: "Development",
+      title: "Full-Stack Web Development Bootcamp",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#495057",
+      textColor: "black",
+      bgColor: "#f3eefc",
+      btnColor: "#17a2b8",
     },
     {
-      title: "UX/UI Design Basics",
-      category: "Design",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "p2",
+      category: "Data Science",
+      title: "Machine Learning A-Z: Hands-On Python",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#b8e6f2",
     },
     {
-      title: "Advanced Data Science",
-      category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "p3",
+      category: "Marketing",
+      title: "The Complete Digital Marketing Course",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#ffdec7",
     },
     {
-      title: "UX/UI Design Basics",
-      category: "Design",
-      imageClass: "/assets/full-stack-developer.webp",
-    },
-    {
-      title: "Advanced Data Science",
-      category: "Computer Science",
-      imageClass: "/assets/full-stack-developer.webp",
-    },
-    {
-      title: "UX/UI Design Basics",
-      category: "Design",
-      imageClass: "/assets/full-stack-developer.webp",
+      id: "p4",
+      category: "Photography",
+      title: "Mastering Photography: A Comprehensive Guide",
+      image: "/assets/full-stack-developer.webp",
+      bgColor: "#f3eefc",
+      categoryBg: "#c8e6c9",
     },
   ],
 };
 
-export default function Courses() {
-  const [activeTab, setActiveTab] = useState("New courses");
+const Courses = () => {
+  const [activeFilter, setActiveFilter] = useState("new");
+  const [displayedCourses, setDisplayedCourses] = useState(allCourses.new);
+
+  useEffect(() => {
+    // This effect runs when the activeFilter changes
+    setDisplayedCourses(allCourses[activeFilter]);
+  }, [activeFilter]);
+
+  const handleFilterClick = (filter) => {
+    setActiveFilter(filter);
+  };
 
   return (
-    <div className="courses-container container-fluid y-6 mb-4">
-      <div className="row align-items-start justify-content-between mb-3 ms-2 flex-wrap px-3 px-md-5">
-        <div className="col-md-6 text-md-start text-center">
-          <h1 className="courses-heading mt-3">
-            Take your <span className="highlight">knowledge</span> a degree
-            further
-          </h1>
-          <div className="d-flex flex-wrap gap-2 mt-4 mb-1 justify-content-md-start justify-content-center">
-            {Object.keys(courseTabs).map((tab, index) => (
-              <button
-                key={index}
-                className={`filter-btn ${activeTab === tab ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab} ({courseTabs[tab].length})
-              </button>
-            ))}
+    <div className="courses-page-wrapper">
+      <div className="container py-5">
+        {/* Top Header Section */}
+        <div className="row mb-5 align-items-end">
+          <div className="col-lg-7 col-md-12">
+            <h1 className="main-heading">
+              Take your <span className="highlight-text">knowledge</span>
+              <br />a degree further
+            </h1>
+          </div>
+          <div className="col-lg-5 col-md-12 text-lg-end mt-4 mt-lg-0">
+            <div className="header-meta-info">
+              <div className="d-flex align-items-center justify-content-lg-end mb-3">
+                <p className="sub-heading mb-0">
+                  Make education work for you with flexible online courses from
+                  leading schools.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="row justify-content-center gap-3 flex-wrap">
-        {courseTabs[activeTab].map((course, idx) => (
-          <div className="course-card col-md-2 col-sm-5" key={idx}>
-            <div
-              className="card-image"
-              style={{ backgroundImage: `url(${course.imageClass})` }}
-            ></div>
-            <div className="card-label">{course.category}</div>
-            <div className="card-title">{course.title}</div>
-            <button className="more-btn">More details</button>
-          </div>
-        ))}
+        {/* Filter Buttons Section */}
+        <div className="d-flex flex-wrap gap-2 mb-3">
+          <button
+            onClick={() => handleFilterClick("new")}
+            className={`btn filter-btn btn-outline-dark ${
+              activeFilter === "new" ? "active" : ""
+            }`}
+          >
+            New courses
+          </button>
+          <button
+            onClick={() => handleFilterClick("recommended")}
+            className={`btn filter-btn btn-outline-dark ${
+              activeFilter === "recommended" ? "active" : ""
+            }`}
+          >
+            Recommended
+          </button>
+          <button
+            onClick={() => handleFilterClick("popular")}
+            className={`btn filter-btn btn-outline-dark ${
+              activeFilter === "popular" ? "active" : ""
+            }`}
+          >
+            Most popular
+          </button>
+        </div>
+
+        {/* Course Cards Section */}
+        <div className="row g-4">
+          {displayedCourses.map((course) => (
+            <div key={course.id} className="col-xl-3 col-md-6 col-sm-12">
+              <div
+                className="course-card h-100"
+                style={{
+                  backgroundColor: course.bgColor,
+                  color: course.textColor || "#212529",
+                  border: course.border || "none",
+                }}
+              >
+                <div className="card-body d-flex flex-column p-4">
+                  <div className="mb-4">
+                    <span
+                      className="card-category"
+                      style={{
+                        backgroundColor: course.categoryBg,
+                        color: course.categoryColor || "#212529",
+                      }}
+                    >
+                      {course.category}
+                    </span>
+                  </div>
+                  <div className="card-image-wrapper my-auto">
+                    <img
+                      src={course.image}
+                      alt={`${course.title} illustration`}
+                      className="card-img-top"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://placehold.co/200x120/ccc/FFF?text=Error";
+                      }}
+                    />
+                  </div>
+                  <div className="mt-auto pt-4">
+                    <h5 className="card-title">{course.title}</h5>
+                    <button className="btn btn-details w-100 btn-outline-secondary text-dark">
+                      More details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Courses;

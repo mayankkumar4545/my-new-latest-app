@@ -20,13 +20,11 @@ const IntroPage = () => {
       <div className="cloud one"></div>
       <div className="cloud two"></div>
       <div className="cloud three"></div>
-      <div className="cloud four"></div>
-      <div className="cloud five"></div>
     </>
   );
 
   return (
-    <div className="intro-page container-fluid">
+    <div className="intro-page container-fluid mb-2">
       {cloudLayers}
       {animatedStars}
       <div className="row align-items-center px-4 px-md-5">
