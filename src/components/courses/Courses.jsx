@@ -81,7 +81,6 @@ const allCourses = {
       category: "Development",
       title: "Full-Stack Web Development Bootcamp",
       image: "/assets/full-stack-developer.webp",
-      bgColor: "#495057",
       textColor: "black",
       bgColor: "#f3eefc",
       btnColor: "#17a2b8",
