@@ -1,0 +1,145 @@
+/* --- FONT IMPORT --- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap");
+
+/* --- THEME VARIABLES --- */
+
+/* Theme 1: Default Dark (Matches Screenshot) */
+.contact-us-page {
+  --page-bg: #111827;
+  --container-bg: #1f2937;
+  --text-color: #d1d5db;
+  --heading-color: #ffffff;
+  --gradient-start: #10b981;
+  --gradient-end: #34d399;
+  --button-bg: rgba(255, 255, 255, 0.1);
+  --button-text: #f9fafb;
+  --button-border: rgba(255, 255, 255, 0.2);
+}
+
+/* Theme 2: Light Mode */
+.contact-us-page.theme-light {
+  --page-bg: #f3f4f6;
+  --container-bg: #ffffff;
+  --text-color: #4b5563;
+  --heading-color: #111827;
+  --gradient-start: #3b82f6;
+  --gradient-end: #60a5fa;
+  --button-bg: #ffffff;
+  --button-text: #3b82f6;
+  --button-border: #e5e7eb;
+}
+
+/* Theme 3: Blue/Purple Dark Mode */
+.contact-us-page.theme-blue {
+  --page-bg: #1e1b4b;
+  --container-bg: #312e81;
+  --text-color: #e0e7ff;
+  --heading-color: #ffffff;
+  --gradient-start: #7c3aed;
+  --gradient-end: #a78bfa;
+  --button-bg: rgba(255, 255, 255, 0.1);
+  --button-text: #f5f3ff;
+  --button-border: rgba(255, 255, 255, 0.2);
+}
+
+/* --- MAIN STYLES --- */
+.contact-us-page {
+  background-color: var(--page-bg);
+  padding: 3rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+}
+
+.contact-us-container {
+  background-color: var(--container-bg);
+  border-radius: 24px;
+  max-width: 1200px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* --- LEFT COLUMN --- */
+.main-heading {
+  color: var(--heading-color);
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.checklist {
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.contact-box {
+  background: radial-gradient(
+    circle at top left,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  padding: 2rem;
+  border-radius: 16px;
+  margin-top: 2rem;
+}
+
+.contact-email a {
+  color: var(--heading-color);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: opacity 0.2s;
+}
+.contact-email a:hover {
+  opacity: 0.8;
+}
+
+.contact-prompt {
+  color: var(--heading-color);
+  opacity: 0.9;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-book-call {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.btn-book-call:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--button-text);
+  transform: translateY(-2px);
+}
+
+/* --- RIGHT COLUMN --- */
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  max-height: 800px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.image-wrapper .img-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 991.98px) {
+  .main-heading {
+    font-size: 2.5rem;
+  }
+  .contact-us-page {
+    padding: 1rem;
+  }
+}

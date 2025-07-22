@@ -74,15 +74,17 @@
 }
 
 /* --- Filter Buttons --- */
+/* --- Filter Buttons --- */
 .filter-btn {
   border-radius: 25px;
   padding: 0.6rem 1.4rem;
   font-size: 0.9rem;
   font-weight: 700;
   transition: all 0.3s ease;
-  border: 1px solid #dee2e6;
+  /* The line below was removed to let Bootstrap handle the border */
+  /* border: 1px solid #151719; */
   background-color: #ffffff;
-  color: #343a40;
+  color: #151313;
 }
 
 .filter-btn:hover {

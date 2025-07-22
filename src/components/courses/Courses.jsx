@@ -152,7 +152,7 @@ const Courses = () => {
         <div className="d-flex flex-wrap gap-2 mb-3">
           <button
             onClick={() => handleFilterClick("new")}
-            className={`btn filter-btn btn-outline-dark ${
+            className={`btn filter-btn  btn-outline-dark ${
               activeFilter === "new" ? "active" : ""
             }`}
           >
